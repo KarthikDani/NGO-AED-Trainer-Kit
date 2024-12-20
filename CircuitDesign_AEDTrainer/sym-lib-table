@@ -1,0 +1,6 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "MAX98357AETE_T")(type "KiCad")(uri "/home/karthik/Downloads/MAX98357AETE_T/MAX98357AETE_T.kicad_sym")(options "")(descr ""))
+  (lib (name "SD_Card")(type "KiCad")(uri "${KIPRJMOD}/SD_Card.kicad_sym")(options "")(descr ""))
+  (lib (name "MICROSD_SPI_OR_SDIO_CARD")(type "KiCad")(uri "/home/karthik/Downloads/MICROSD_SPI_OR_SDIO_CARD/MICROSD_SPI_OR_SDIO_CARD.kicad_sym")(options "")(descr ""))
+)
