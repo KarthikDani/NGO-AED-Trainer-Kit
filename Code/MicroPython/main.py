@@ -5,7 +5,13 @@ from wavplayer import WavPlayer
 from sdcard import SDCard
 
 # Pin assignments for rotary switch (assuming pins 5 to 9 for the switch)
-ROTARY_PINS = [Pin(2, Pin.IN, Pin.PULL_UP), Pin(3, Pin.IN, Pin.PULL_UP)]
+ROTARY_PINS = [Pin(2, Pin.IN, Pin.PULL_UP),  # Hindi
+               Pin(3, Pin.IN, Pin.PULL_UP),  # Kannada
+               Pin(4, Pin.IN, Pin.PULL_UP),  # Telugu
+               Pin(5, Pin.IN, Pin.PULL_UP),  # Tamil
+               Pin(6, Pin.IN, Pin.PULL_UP),  # Malayalam
+               Pin(7, Pin.IN, Pin.PULL_UP),  # English
+               ]
 
 BUTTON_PLAY_PIN = Pin(14, Pin.IN, Pin.PULL_UP)  # Play button pin
 BUTTON_PAUSE_TOGGLE_PIN = Pin(15, Pin.IN, Pin.PULL_UP)  # Pause/Play toggle button pin
@@ -56,7 +62,7 @@ def is_directory(path):
         return False
 
 # Get list of language directories in SD card
-language_dirs = [d for d in os.listdir('/sd') if is_directory(f'/sd/{d}')]
+language_dirs = [d for d in os.listdir('/sd') if is_directory(f'/sd/{d}') and not d.startswith('.')]
 
 # Initialize variables
 current_language_index = 0
@@ -73,7 +79,7 @@ def play_wav_file(file_name):
     """Play the selected wav file."""
     global current_file_playing
     current_file_playing = file_name
-    #print(f"Playing: {current_file_playing}")
+    print(f"Playing: {current_file_playing}")
     wp.play(f"{file_name}", loop=False)
 
 def handle_file_index_and_play():
@@ -130,8 +136,7 @@ def on_rotary_switch_change(pin):
     for i, rotary_pin in enumerate(ROTARY_PINS):
         if not rotary_pin.value():  # Active-low check
             current_language_index = i
-            # Optionally print the selected language
-            # print(f"Language changed to: {language_dirs[current_language_index]}")
+            print(f"Language changed to: {language_dirs[current_language_index]}")
             current_file_index = -1  # Reset file index when language changes
             break
     
@@ -169,5 +174,5 @@ while True:
     else:
         turn_on_led(LED_PINS[current_file_index])
 
-    print(f"current_file_index: {current_file_index}")
-    time.sleep_ms(150)
+    print(f"current_file_index: {current_file_index} | current_langauge_index: {current_language_index}")
+    time.sleep_ms(10)
