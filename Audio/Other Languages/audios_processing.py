@@ -1,10 +1,10 @@
 import os
 from pydub import AudioSegment
 
-def amplify_audio(audio_path, amplification_db):
-    """Amplifies the audio file by a given decibel value."""
+def attenuate_audio(audio_path, attenuation_db):
+    """Reduces the volume of the audio file by a given decibel value."""
     audio = AudioSegment.from_file(audio_path)
-    return audio + amplification_db
+    return audio - attenuation_db
 
 def generate_sequences(shock, no_shock, beat):
     """Generates audio sequences in three specified orders."""
@@ -14,8 +14,8 @@ def generate_sequences(shock, no_shock, beat):
         "SNN": shock + beat + no_shock + beat + no_shock + beat
     }
 
-def process_language_audio(language_dir, beat_path, output_dir, amplification_languages, 
-                           amplification_db=10):
+def process_language_audio(language_dir, beat_path, output_dir, attenuation_languages, 
+                           attenuation_db=3):
     # Load the beat audio
     beat = AudioSegment.from_file(beat_path)
 
@@ -39,10 +39,10 @@ def process_language_audio(language_dir, beat_path, output_dir, amplification_la
                 shock = AudioSegment.from_file(shock_path)
                 no_shock = AudioSegment.from_file(no_shock_path)
 
-                # Amplify audio if the language matches specific criteria
-                if any(lang in language.lower() for lang in amplification_languages):
-                    shock = amplify_audio(shock_path, amplification_db)
-                    no_shock = amplify_audio(no_shock_path, amplification_db)
+                # Attenuate audio if the language matches specific criteria
+                if any(lang in language.lower() for lang in attenuation_languages):
+                    shock = attenuate_audio(shock_path, attenuation_db)
+                    no_shock = attenuate_audio(no_shock_path, attenuation_db)
 
                 # Generate audio sequences
                 sequences = generate_sequences(shock, no_shock, beat)
@@ -59,10 +59,10 @@ def process_language_audio(language_dir, beat_path, output_dir, amplification_la
 parent_dir = "."  # Replace with your parent directory path
 beat_file = os.path.join(parent_dir, "100bpm.mp3")
 output_directory = "outputs"  # Replace with your desired output directory
-amplification_languages = ["telugu", "tamil", "malayalam"]
+attenuation_languages = ["telugu", "tamil", "malayalam", "english"]
 
 # Create output directory if it doesn't exist
 os.makedirs(output_directory, exist_ok=True)
 
 # Run the function
-process_language_audio(parent_dir, beat_file, output_directory, amplification_languages)
+process_language_audio(parent_dir, beat_file, output_directory, attenuation_languages)
