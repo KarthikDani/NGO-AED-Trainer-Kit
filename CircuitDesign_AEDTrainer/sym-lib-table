@@ -3,4 +3,5 @@
   (lib (name "MAX98357AETE_T")(type "KiCad")(uri "/home/karthik/Downloads/MAX98357AETE_T/MAX98357AETE_T.kicad_sym")(options "")(descr ""))
   (lib (name "SD_Card")(type "KiCad")(uri "${KIPRJMOD}/SD_Card.kicad_sym")(options "")(descr ""))
   (lib (name "MICROSD_SPI_OR_SDIO_CARD")(type "KiCad")(uri "/home/karthik/Downloads/MICROSD_SPI_OR_SDIO_CARD/MICROSD_SPI_OR_SDIO_CARD.kicad_sym")(options "")(descr ""))
+  (lib (name "RASPBERRY_PI_PICO")(type "KiCad")(uri "/home/karthik/Downloads/RASPBERRY_PI_PICO/RASPBERRY_PI_PICO.kicad_sym")(options "")(descr ""))
 )
