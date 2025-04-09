@@ -3370,6 +3370,16 @@
 		)
 		(uuid f9adbbd1-66c7-49c4-83d4-373c41837934)
 	)
+	(text "Improvements:\n	MISO = GP8\n	MOSI = GP11\n"
+		(exclude_from_sim no)
+		(at 157.226 123.444 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "02529e3c-231c-4cde-bf77-7758d33caf16")
+	)
 	(text "Micro SD Card Module"
 		(exclude_from_sim no)
 		(at 45.974 50.292 0)
